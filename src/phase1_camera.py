@@ -12,6 +12,7 @@ print("Middle pixel", frame[540,960])
 gray = cv.cvtColor(frame, cv.COLOR_BGR2GRAY)
 print("Color shape", frame.shape)
 print("Gray shape", gray.shape)
+
 while True:
     curr_time = time.time()
     fps = 1/(curr_time - prev_time)
@@ -19,10 +20,11 @@ while True:
     success , frame = cap.read()
     if not success:
         break
+    frame = cv.flip(frame,1)
     gray = cv.cvtColor(frame,cv.COLOR_BGR2GRAY)
     cv.putText(gray,f"FPS:{int(fps)}",(10,30),cv.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
-    cv.imshow("color ", frame)
     cv.imshow("gray ", gray)
+    cv.imshow("color ", frame)
     if cv.waitKey(1) & 0xFF == ord('q'):
         break
 cap.release()
