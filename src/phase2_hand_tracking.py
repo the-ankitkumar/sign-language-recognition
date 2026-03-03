@@ -31,12 +31,21 @@ while(True):
         h, w, c = frame.shape
 
         index_tip = hand_landmarks.landmark[8]
+        thumb_tip = hand_landmarks.landmark[4]
+        pinky_tip = hand_landmarks.landmark[20]
 
-        pixel_x = int(index_tip.x * w)
-        pixel_y = int(index_tip.y * h)
-        cv.circle(frame, (pixel_x, pixel_y), 15, (0, 255, 0), -1)
+        index_pixel_x = int(index_tip.x * w)
+        index_pixel_y = int(index_tip.y * h)
+        thumb_pixel_x = int(thumb_tip.x * w)
+        thumb_pixel_y = int(thumb_tip.y * h)
+        pinky_pixel_x = int(pinky_tip.x * w)
+        pinky_pixel_y = int(pinky_tip.y * h)
+        
+        cv.circle(frame, (index_pixel_x, index_pixel_y), 15, (0, 255, 0), -1)
+        cv.circle(frame, (thumb_pixel_x, thumb_pixel_y), 15, (255, 0, 0), -1)
+        cv.circle(frame, (pinky_pixel_x, pinky_pixel_y), 15, (0, 0, 255), -1)
 
-        print(f"Pixels → x:{pixel_x} y:{pixel_y}")
+        print(f"Pixels → x:{index_pixel_x} y:{index_pixel_y}")
 
     cv.imshow("window",frame)
 
