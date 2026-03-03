@@ -1,0 +1,13 @@
+.venv/
+venv/
+
+.DS_Store
+
+__pycache__/
+*.pyc 
+*.pyo 
+_old_attempt/
+
+*.h5
+*.pkl
+*.tflite
