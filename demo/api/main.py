@@ -1,3 +1,7 @@
+import os
+os.environ["DISPLAY"] = ":99"
+os.environ["QT_QPA_PLATFORM"] = "offscreen"
+
 from fastapi import FastAPI, WebSocket
 import tensorflow as tf
 import pickle
@@ -6,9 +10,8 @@ import cv2
 import mediapipe as mp
 import json
 from fastapi.staticfiles import StaticFiles
-import os
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 app = FastAPI()
 app.mount("/static", StaticFiles(directory="demo/static", check_dir=False), name="static")
