@@ -10,12 +10,12 @@ from fastapi.staticfiles import StaticFiles
 
 
 app = FastAPI()
-app.mount("/static", StaticFiles(directory="static"), name="static")
+app.mount("/static", StaticFiles(directory="demo/static"), name="static")
 
 
-model = tf.keras.models.load_model("models/gesture_model.h5")
+model = tf.keras.models.load_model("demo/models/gesture_model.h5")
 
-with open("models/label_encoder.pkl", "rb") as f:
+with open("demo/models/label_encoder.pkl", "rb") as f:
     label_encoder = pickle.load(f)
 
 mp_hands = mp.solutions.hands
