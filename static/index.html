@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign language Reconition</title>
+</head>
+<body>
+    <video id="video" style="transform: scaleX(-1)"></video>
+    <canvas id="canvas"></canvas>
+    <h1 id="result">waiting</h1>
+    <script>
+        const video = document.getElementById("video")
+        const canvas = document.getElementById("canvas")
+        const result = document.getElementById("result")
+        const ctx = canvas.getContext("2d")
+        navigator.mediaDevices.getUserMedia({video:true})
+        .then(stream=>{
+            video.srcObject = stream
+            video.play()
+        })
+        const ws = new WebSocket("ws://localhost:8000/ws")
+        ws.onmessage = (event) =>{
+            const data = JSON.parse(event.data)
+            result.innerHTML = `${data.gesture} - ${data.confidence.toFixed(1)}%`
+
+        }
+        function sendFrame(){
+            canvas.width = video.videoWidth
+            canvas.height = video.videoHeight
+
+            ctx.save()
+            ctx.scale(-1, 1)
+
+            ctx.drawImage(video, -canvas.width, 0)
+             ctx.restore()
+            canvas.toBlob(blob =>{
+                if (ws.readyState === WebSocket.OPEN) {
+            blob.arrayBuffer().then(buffer => {
+                ws.send(buffer)
+            })
+        }
+    }, "image/jpeg")
+        }
+        setInterval(sendFrame, 100)
+
+    </script>
+</body>
+</html>
