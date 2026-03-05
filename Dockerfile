@@ -8,7 +8,6 @@ RUN apt-get update && apt-get install -y \
     libxext6 \
     libxcb1 \
     libx11-6 \
-    libxcb-xinerama0 \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
