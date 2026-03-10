@@ -45,7 +45,7 @@ video.srcObject=stream
 video.play()
 })
 
-const ws=new WebSocket("wss://sign-language-recognition-gfl5.onrender.com/ws")
+const ws=new WebSocket("wss://localhost:8000/ws")
 
 ws.onmessage=(event)=>{
 const data=JSON.parse(event.data)

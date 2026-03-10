@@ -4,8 +4,8 @@ import numpy as np
 import tensorflow as tf
 from tensorflow import keras
 import pickle 
-model = keras.models.load_model('models/gesture_model.h5')
-with open('models/label_encoder.pkl','rb') as f:
+model = keras.models.load_model('./demo/models/gesture_model.h5')
+with open('./demo/models/label_encoder.pkl','rb') as f:
     le = pickle.load(f)
 print("Model Loaded")
 print("Classes",le.classes_)
