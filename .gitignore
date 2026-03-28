@@ -9,3 +9,11 @@ __pycache__/
 _old_attempt/
 
 *.tflite
+data/
+data.zip
+notebooks/
+*.h5
+*.pt
+*.pth
+*.zip
+venv/
