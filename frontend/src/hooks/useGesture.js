@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, useCallback } from 'react'
 
-const WS_URL = 'ws://localhost:8000/ws'
+const WS_URL = window.location.hostname === 'localhost' ? 'ws://localhost:8000/ws' : 'wss://sign-language-recognition-1-sxt8.onrender.com/ws'
 const FRAME_INTERVAL_MS = 100 // capture frame every 100ms
 
 /**
