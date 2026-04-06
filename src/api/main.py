@@ -45,7 +45,7 @@ log = logging.getLogger(__name__)
 # Paths — model is loaded from models/v1/  (same layout as training code)
 # ──────────────────────────────────────────────────────────────────────────────
 BASE_DIR   = os.path.dirname(os.path.abspath(__file__))
-MODEL_DIR  = "/Users/vipin/Documents/Coding/Projects/Sign_ Language_Recognition/models/v1"
+MODEL_DIR  = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "models", "v1")
 MODEL_PATH = os.path.join(MODEL_DIR, "gesture_model.h5")
 LE_PATH    = os.path.join(MODEL_DIR, "label_encoder.pkl")
 
