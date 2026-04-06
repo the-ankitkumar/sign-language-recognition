@@ -12,7 +12,6 @@ _old_attempt/
 data/
 data.zip
 notebooks/
-*.h5
 *.pt
 *.pth
 *.zip
