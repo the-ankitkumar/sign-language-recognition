@@ -39,6 +39,11 @@ export default function Navbar() {
           ))}
           <Link
             to="/demo"
+            onClick={() => {
+              if (pathname === '/demo') {
+                window.location.reload()
+              }
+            }}
             className="ml-4 px-4 py-2 bg-white text-accent rounded-md text-sm font-bold font-display hover:bg-white/90 transition-colors duration-200 shadow-sm"
           >
             Try Now →

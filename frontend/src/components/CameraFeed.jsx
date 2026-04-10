@@ -8,7 +8,7 @@ import { forwardRef } from 'react'
  */
 const CameraFeed = forwardRef(function CameraFeed({ isConnected, isStreaming, onStart }, ref) {
   return (
-    <div className="relative rounded-2xl overflow-hidden border border-border bg-surface aspect-video shadow-card">
+    <div className="relative rounded-2xl overflow-hidden border border-border bg-surface flex-1 w-full h-full min-h-[300px] shadow-card">
 
       {/* Scan line (only when streaming) */}
       {isStreaming && <div className="absolute inset-0 scan-line z-10 pointer-events-none" />}

@@ -19,7 +19,7 @@ export default function TextDisplay({ text, onClear }) {
   const lines = text.split('\n')
 
   return (
-    <div className="bg-panel rounded-2xl border border-border overflow-hidden shadow-card">
+    <div className="bg-panel rounded-2xl border border-border overflow-hidden shadow-card flex flex-col h-full">
 
       {/* Header bar */}
       <div className="flex items-center justify-between px-5 py-3 border-b border-border bg-surface/50">
@@ -64,7 +64,7 @@ export default function TextDisplay({ text, onClear }) {
       </div>
 
       {/* Text area */}
-      <div className="p-5 min-h-36 max-h-64 overflow-y-auto">
+      <div className="p-5 flex-1 min-h-36 overflow-y-auto">
         {text ? (
           <div className="font-display text-xl leading-relaxed text-text">
             {lines.map((line, i) => (
